@@ -1,0 +1,37 @@
+﻿@page
+@model Biblioteka_Web_ver2.Pages.Forms.AddNewItemModel
+@{
+    ViewData["Title"] = "Dodaj nową książkę";
+}
+
+        <br />
+        <h1 class="text-primary" >Dodaj nową książkę</h1>
+        <br />
+        <div >
+            <form class="form-floating" method="post" enctype="multipart/form-data">
+
+                <input type="text" class="form-control" id="floatingTitle" asp-for="Book.Title" placeholder="Tytuł książki" />
+                <br />
+                <input type="text" class="form-control" id="floatingAuthor" asp-for="Book.Author" placeholder="Autor książki" />
+                <br />
+                <textarea class="form-control" placeholder="Opis dzieła" id="floatingDescription" rows="10" asp-for="Book.Description"></textarea>
+                <br />
+                <label>Okładka</label>
+                <br />
+                <input asp-for="FileUpload" type="file">
+                <span asp-validation-for="FileUpload"></span>
+                <br />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2 pt-2">
+                            <input type="submit" value="Dodaj książkę" class="btn btn-primary" />
+                        </div>
+                        <div class="col-sm-2 pt-2">
+                            <a asp-page="/Forms/View" class="btn btn-dark">Wróć do listy</a>
+                        </div>
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+       

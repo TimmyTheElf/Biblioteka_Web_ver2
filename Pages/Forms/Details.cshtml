@@ -1,0 +1,39 @@
+﻿@page
+@model Biblioteka_Web_ver2.Pages.Forms.DetailsModel
+@{
+    ViewData["Title"] = "Podglad ksiazki";
+}
+ <div class="container-fluid ">
+    <h1 class="text-center" style="font-family:'Bookman Old Style'">"@Html.DisplayFor(x=>Model.Book.Title)"</h1>
+    <h2 class="text-center" style="font-family:'Bookman Old Style'"><i>@Html.DisplayFor(x => Model.Book.Author)</i></h2>
+    <br />
+     <div class="row">
+
+        <div class="col-4">
+            
+            @if (Model.Book.Cover != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.Book.Cover)" height="450" width="300" />
+            }
+            else
+            {
+                <img src="~/Images/nocover.jpg" height="450" width="300" />
+            }
+        </div>
+        <div class="col-8">
+            <label style="font-weight:bold">Opis</label>
+            <p style="font-family:'Book Antiqua'; font-size:18px;"><i>
+                @Html.DisplayFor(x => Model.Book.Description)
+            </i>
+                </p>
+
+        </div>
+    </div>
+</div>
+<br />
+ <form method="post" style="align-items:center">
+     <a asp-page="/Forms/AddNewItem" class="btn btn-primary btn-sm">Dodaj nowy</a>
+     <a asp-page="/Forms/Update" asp-route-id="@Model.Book.Id" class="btn btn-secondary btn-sm">Modyfikuj</a>
+     <button asp-page-handler="Delete" asp-route-id="@Model.Book.Id" class="btn btn-danger btn-sm">Usuń</button>
+     <a asp-page="/Forms/View" class="btn btn-dark btn-sm">Wróć do listy</a>
+ </form>
